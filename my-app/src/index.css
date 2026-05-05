@@ -1,0 +1,22 @@
+@import "tailwindcss";
+ 
+/* ============================================
+   BIG WALNUT HIGH SCHOOL — GOLDEN EAGLES
+   Brand Color System
+   ============================================ */
+:root {
+  --bw-red: #B30838;
+  --bw-gold: #FDBB30;
+  --bw-black: #000000;
+  --bw-white: #FFFFFF;
+  --bw-gray: #F5F5F5;
+}
+ 
+/* Print styles for the transcript page */
+@media print {
+  .print\:hidden {
+    display: none !important;
+  }
+}
+ 
+
