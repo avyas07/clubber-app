@@ -44,7 +44,8 @@ const CreateClubPage: React.FC<CreateClubPageProps> = ({ onSuccess }) => {
       if (newClub) {
         const { error: rosterError } = await supabase
           .from('club_members')
-          .insert([{ user_id: user.id, club_id: newClub.id }]);
+          // FIX IS HERE: Added role: 'owner'
+          .insert([{ user_id: user.id, club_id: newClub.id, role: 'admin' }]);
         if (rosterError) throw rosterError;
       }
 
