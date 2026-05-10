@@ -68,11 +68,6 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ onViewClub, onManageClub 
     }
   };
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    window.location.reload();
-  };
-
   if (isLoading) return (
     <div className="min-h-screen flex items-center justify-center text-[#B30838] font-bold text-lg">Loading...</div>
   );
