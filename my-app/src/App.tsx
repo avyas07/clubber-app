@@ -11,7 +11,7 @@ import ClubDetailsPage from './pages/ClubDetailsPage';
 import LogHoursPage from './pages/LogHoursPage'; 
 import AdminHubPage from './pages/AdminHubPage'; 
 import HoursTranscriptPage from './pages/HoursTranscriptPage'; 
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/next"
 
 // NEW: Added 'transcript' to allowed routes
 type PageState = 'landing' | 'join' | 'create' | 'all-clubs' | 'signup' | 'login' | 'dashboard' | 'club-details' | 'log-hours' | 'admin-hub' | 'transcript';
