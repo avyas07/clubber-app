@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
+import toast from 'react-hot-toast';
 
 interface AdminHubProps {
   clubId: string;
@@ -98,7 +99,7 @@ const AdminHubPage: React.FC<AdminHubProps> = ({ clubId, onBack }) => {
     // 2. If the person is currently an admin/owner, AND the total count is 1, BLOCK IT.
     if (currentMember && (currentMember.role === 'admin' || currentMember.role === 'owner')) {
       if (count !== null && count <= 1) {
-        alert('Action Blocked: The club must have at least one admin or owner at all times. Appoint someone else first!');
+        toast.error('The club must have at least one admin. Appoint someone else first!');
         return; // This completely stops the function right here
       }
     }

@@ -12,6 +12,7 @@ import LogHoursPage from './pages/LogHoursPage';
 import AdminHubPage from './pages/AdminHubPage'; 
 import HoursTranscriptPage from './pages/HoursTranscriptPage'; 
 import { inject } from "@vercel/analytics"
+import { Toaster } from 'react-hot-toast';
 
 
 inject();
@@ -167,6 +168,8 @@ const App: React.FC = () => {
 
       {currentPage === 'signup' && <SignUpPage onSuccess={handleAuthSuccess} />}
       {currentPage === 'login' && <LoginPage onSuccess={handleAuthSuccess} />}
+
+      <Toaster position="top-center" />
 
     </div>
     
