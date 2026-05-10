@@ -11,7 +11,10 @@ import ClubDetailsPage from './pages/ClubDetailsPage';
 import LogHoursPage from './pages/LogHoursPage'; 
 import AdminHubPage from './pages/AdminHubPage'; 
 import HoursTranscriptPage from './pages/HoursTranscriptPage'; 
-import { Analytics } from "@vercel/analytics/next"
+import { inject } from "@vercel/analytics"
+
+
+inject();
 
 // NEW: Added 'transcript' to allowed routes
 type PageState = 'landing' | 'join' | 'create' | 'all-clubs' | 'signup' | 'login' | 'dashboard' | 'club-details' | 'log-hours' | 'admin-hub' | 'transcript';
@@ -165,7 +168,6 @@ const App: React.FC = () => {
       {currentPage === 'signup' && <SignUpPage onSuccess={handleAuthSuccess} />}
       {currentPage === 'login' && <LoginPage onSuccess={handleAuthSuccess} />}
 
-      <Analytics />
     </div>
     
   );
