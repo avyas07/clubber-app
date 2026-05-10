@@ -100,15 +100,15 @@ const App: React.FC = () => {
           
           <div className="flex gap-3">
             {session ? (
-              <button onClick={handleLogout} className="text-sm font-medium text-red-600 bg-red-50 border border-red-100 px-4 py-2 rounded-lg hover:bg-red-100 transition-colors shadow-sm">
+              <button onClick={handleLogout} className="text-sm font-black text-white bg-[#B30838] border-b-4 border-red-900 px-6 py-2 rounded-lg hover:brightness-110 active:border-b-0 active:translate-y-[2px] transition-all shadow-md uppercase tracking-tight">
                 Log Out
               </button>
             ) : (
               <>
-                <button onClick={() => setCurrentPage('login')} className="text-sm font-medium text-blue-600 bg-white border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors shadow-sm">
+                <button onClick={() => setCurrentPage('login')} className= "text-sm font-black text-white bg-red-700 border-b-4 border-gray-900 px-6 py-2 rounded-lg hover:brightness-110 active:border-b-0 active:translate-y-[2px] transition-all shadow-md uppercase tracking-tight">
                   Log In
                 </button>
-                <button onClick={() => setCurrentPage('signup')} className="text-sm font-medium text-white bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+                <button onClick={() => setCurrentPage('signup')} className="text-sm font-black text-white bg-[#FDBB30] border-b-4 border-yellow-600 px-6 py-2 rounded-lg hover:brightness-110 active:border-b-0 active:mt-1 transition-all shadow-md uppercase tracking-tight">
                   Sign Up
                 </button>
               </>
