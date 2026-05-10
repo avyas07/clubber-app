@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { supabase } from '../supabaseClient';
+import toast from 'react-hot-toast';
 
 interface LogHoursPageProps {
   clubId: string;
@@ -40,11 +41,11 @@ const LogHoursPage: React.FC<LogHoursPageProps> = ({ clubId, onBack, onSuccess }
 
       if (error) throw error;
       
-      alert("Hours submitted! Waiting for Admin approval.");
+      toast.success("Hours submitted! Waiting for Admin approval.");
       onSuccess();
     } catch (error: any) {
       console.error('Error logging hours:', error);
-      alert(error.message || "Failed to log hours.");
+      toast.error(error.message || "Failed to log hours.");
     } finally {
       setIsLoading(false);
     }

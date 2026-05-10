@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 
+
 interface ClubDetailsProps {
   clubId: string;
   onBack: () => void;

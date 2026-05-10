@@ -85,7 +85,7 @@ const AdminHubPage: React.FC<AdminHubProps> = ({ clubId, onBack }) => {
 
     if (error) {
       console.error('Error checking admin count:', error);
-      alert('Failed to verify club permissions.');
+      toast.error('Failed to verify club permissions.');
       return;
     }
 
@@ -113,7 +113,7 @@ const AdminHubPage: React.FC<AdminHubProps> = ({ clubId, onBack }) => {
 
   if (updateError) {
     console.error('Failed to update role:', updateError);
-    alert('Failed to update role.');
+    toast.error('Failed to update role.');
   } else {
     fetchAdminData();
   }
@@ -140,11 +140,18 @@ const AdminHubPage: React.FC<AdminHubProps> = ({ clubId, onBack }) => {
       .eq('updated_at', club.updated_at)
       .select();
 
-    if (error) alert('Error saving settings.');
+    if (error) toast.error('Error saving settings.');
     if (data && data.length === 0) {
-      alert('⚠️ CONFLICT: Another Admin just updated these settings! Please refresh before making yours.');
+      toast.error('⚠️ CONFLICT: Another Admin just updated these settings! Please refresh before making yours.');
     } else {
-      alert('Settings saved successfully!');
+      toast.success('Settings updated!', {
+      icon: '⚙️',
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+  });
       setClub({ ...club, updated_at: currentTimestamp });
     }
   };

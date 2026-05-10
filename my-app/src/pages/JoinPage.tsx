@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { supabase } from '../supabaseClient';
 
+
 const JoinPage: React.FC = () => {
   const [joinCode, setJoinCode] = useState('');
   const [message, setMessage] = useState({ type: '', text: '' });

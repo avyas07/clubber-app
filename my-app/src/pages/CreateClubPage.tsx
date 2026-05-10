@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { supabase } from '../supabaseClient';
+import toast from 'react-hot-toast';
 
 interface CreateClubPageProps {
   onSuccess: () => void;
@@ -49,11 +50,20 @@ const CreateClubPage: React.FC<CreateClubPageProps> = ({ onSuccess }) => {
         if (rosterError) throw rosterError;
       }
 
-      alert(`Club Created! Your join code is: ${generatedCode}`);
+      toast(`Club Created! Join Code: ${generatedCode}`, {
+        icon: '🦅',
+        duration: 8000, // Stay for 8 seconds
+    style: {
+        border: '2px solid #FDBB30', // That gold border from your UI
+        padding: '16px',
+        color: '#B30838', // Your brand red
+        fontWeight: 'bold',
+    },
+  });
       onSuccess();
     } catch (error: any) {
       console.error('Error creating club:', error);
-      alert(error.message || 'Failed to create club.');
+      toast.error(error.message || 'Failed to create club.');
     } finally {
       setIsLoading(false);
     }
