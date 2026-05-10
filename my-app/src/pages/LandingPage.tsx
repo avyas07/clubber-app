@@ -50,7 +50,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onCreateClub })
  
       {/* Footer strip */}
       <div className="bg-black py-3 px-6 text-center">
-        <span className="text-white/50 text-xs">© Big Walnut High School · Sunbury, Ohio</span>
+        <span className="text-white/50 text-xs"> Big Walnut High School · Sunbury, Ohio</span>
       </div>
  
     </div>

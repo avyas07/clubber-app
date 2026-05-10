@@ -89,12 +89,6 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ onViewClub, onManageClub 
             </h1>
             <p className="text-white/70 mt-1 font-medium">Your Golden Eagle Club Dashboard</p>
           </div>
-          <button
-            onClick={handleLogout}
-            className="px-4 py-2 text-sm font-bold text-[#B30838] bg-white rounded hover:bg-[#FDBB30] transition-colors"
-          >
-            Log Out
-          </button>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
