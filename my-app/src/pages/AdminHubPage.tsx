@@ -71,10 +71,52 @@ const AdminHubPage: React.FC<AdminHubProps> = ({ clubId, onBack }) => {
     }
   };
 
-  const handleUpdateRole = async (memberRowId: string, newRole: string) => {
-    await supabase.from('club_members').update({ role: newRole }).eq('id', memberRowId);
+ const handleUpdateRole = async (memberRowId: string, newRole: string) => {
+  // 1. Only run the safety check if someone is being demoted to 'member'
+  if (newRole === 'member') {
+    
+    // Ask Supabase exactly how many admins or owners currently exist in this club
+    const { count, error } = await supabase
+      .from('club_members')
+      .select('id', { count: 'exact', head: true })
+      .eq('club_id', clubId) 
+      .in('role', ['admin', 'owner']);
+
+    if (error) {
+      console.error('Error checking admin count:', error);
+      alert('Failed to verify club permissions.');
+      return;
+    }
+
+    // Check the current role of the specific person being clicked
+    const { data: currentMember } = await supabase
+      .from('club_members')
+      .select('role')
+      .eq('id', memberRowId)
+      .single();
+
+    // 2. If the person is currently an admin/owner, AND the total count is 1, BLOCK IT.
+    if (currentMember && (currentMember.role === 'admin' || currentMember.role === 'owner')) {
+      if (count !== null && count <= 1) {
+        alert('Action Blocked: The club must have at least one admin or owner at all times. Appoint someone else first!');
+        return; // This completely stops the function right here
+      }
+    }
+  }
+
+  // 3. If they passed the security check (or if they are promoting someone), do the update
+  const { error: updateError } = await supabase
+    .from('club_members')
+    .update({ role: newRole })
+    .eq('id', memberRowId);
+
+  if (updateError) {
+    console.error('Failed to update role:', updateError);
+    alert('Failed to update role.');
+  } else {
     fetchAdminData();
-  };
+  }
+};
 
   const handleKickMember = async (memberRowId: string) => {
     if (window.confirm('Are you sure you want to kick this member?')) {
