@@ -54,7 +54,7 @@ const AllClubsPage: React.FC<AllClubsPageProps> = ({ onViewClub }) => {
 
   return (
     <div className="min-h-screen bg-[#F5F5F5] py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto space-y-8">
+      <div className="max-w-6xl mx-auto space-y-8">
 
         {/* Page Header */}
         <div className="text-center border-b-4 border-[#B30838] pb-6">
@@ -67,33 +67,31 @@ const AllClubsPage: React.FC<AllClubsPageProps> = ({ onViewClub }) => {
             <p className="text-gray-500">No clubs have been created yet!</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {clubs.map(club => (
               <div
                 key={club.id}
-                className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-[#B30838] transition-all overflow-hidden"
+                className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-[#B30838] transition-all overflow-hidden flex flex-col"
               >
                 {/* Gold top accent bar */}
                 <div className="h-1 bg-[#FDBB30]" />
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-3">
+                <div className="p-5 flex flex-col flex-1">
+                  <div className="flex justify-between items-start mb-2 gap-2">
                     <button
                       onClick={() => onViewClub(club.id)}
-                      className="text-xl font-black text-gray-900 hover:text-[#B30838] text-left transition-colors uppercase tracking-tight"
+                      className="text-base font-black text-gray-900 hover:text-[#B30838] text-left transition-colors uppercase tracking-tight leading-tight"
                     >
                       {club.name}
                     </button>
-                    <div className="flex flex-col items-end gap-1">
-                      <span className="inline-block px-3 py-1 text-xs font-bold text-[#B30838] bg-red-50 border border-[#B30838]/20 rounded-full uppercase">
-                        {club.category}
-                      </span>
-                      <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">
-                        {club.memberCount} Members
-                      </span>
-                    </div>
+                    <span className="shrink-0 inline-block px-2 py-1 text-[10px] font-bold text-[#B30838] bg-red-50 border border-[#B30838]/20 rounded-full uppercase">
+                      {club.category}
+                    </span>
                   </div>
-                  <p className="text-gray-600 text-sm line-clamp-3">{club.description}</p>
-                  <div className="mt-4 pt-4 border-t border-gray-100">
+                  <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-2">
+                    {club.memberCount} Members
+                  </p>
+                  <p className="text-gray-600 text-sm line-clamp-3 flex-1">{club.description}</p>
+                  <div className="mt-4 pt-3 border-t border-gray-100">
                     <button
                       onClick={() => onViewClub(club.id)}
                       className="text-sm text-[#B30838] font-bold hover:text-[#FDBB30] transition-colors uppercase tracking-wide"
